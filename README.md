@@ -1,1 +1,1 @@
-TRELLO: https://trello.com/b/wXBgoemi/goaldiggers
+Trello: https://trello.com/b/wXBgoemi/goaldiggers
