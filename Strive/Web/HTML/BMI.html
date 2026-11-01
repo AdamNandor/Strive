@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../JS/BMI.js" defer></script>
+    <title>Strive - BMI Kalkulátor</title>
+</head>
+<body>
+    <h1>BMI kalkulátor</h1>
+    
+    <label for="weight">Adja meg a súlyát (kg):</label><br>
+    <input type="number" id="weight" placeholder="Súly (kg)" step="0.1" min="1">
+    
+    <br><br>
+    
+    <label for="height">Adja meg a magasságát (cm):</label><br>
+    <input type="number" id="height" placeholder="Magasság (cm)" step="0.1" min="50">
+    
+    <br><br>
+    
+    <button onclick="calculateBMI()">Számol</button>
+    
+    <p id="result"></p>
+</body>
+</html>
