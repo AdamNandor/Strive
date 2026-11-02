@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../JS/CalorieCalculator.js" defer></script>
+    <title>Strive - Kalória Kalkulátor</title>
+</head>
+<body>
+    <h1>Kalória kalkulátor</h1>
+    
+
+    <label for="gender">Nem:</label><br>
+    <select id="gender">
+        <option value="male">Férfi</option>
+        <option value="female">Nő</option>
+    </select>
+    
+    <br><br>
+    <label for="age">Kor:</label><br>
+    <input type="text" id="age" min="1">
+
+    <br><br>
+
+    <label for="height">Magasság (cm):</label><br>
+    <input type="text" id="height" min="50">
+    
+    <br><br>
+
+    <label for="weight">Tömeg (kg):</label><br>
+    <input type="text" id="weight" min="1">
+
+    <br><br>
+
+    <button onclick="calculateCalories()">Számol</button>
+    
+    <p id="result"></p>
+</body>
+</html>

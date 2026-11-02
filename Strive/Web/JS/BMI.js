@@ -7,15 +7,20 @@ function calculateBMI() {
         resultElement.textContent = 'Kérlek, adj meg érvényes adatokat.';
         return;
     }
-
+    
     const bmi = weight / (height * height);
+    
+    returnCategory(bmi, resultElement);
+}
+
+function returnCategory(bmi, resultElement) {
     let category = '';
 
     if (bmi < 18.5) {
         category = 'Sovány';
-    } else if (bmi < 25) {
+    } else if (bmi >= 18.5 && bmi < 25) {
         category = 'Normál testsúly';
-    } else if (bmi < 30) {
+    } else if (bmi >= 25 && bmi < 30) {
         category = 'Túlsúly';
     } else {
         category = 'Elhízás';
