@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Label Content="Strive" HorizontalAlignment="Center" Margin="0,53,0,306" RenderTransformOrigin="0.56,5.191" FontSize="40"/>
+
     </Grid>
 </Window>
