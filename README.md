@@ -1,36 +1,36 @@
 # Strive
 
-Strive is a fitness and wellness platform prototype built around personal health tracking, coaching, and goal-oriented planning. The project combines a .NET WPF desktop application with a lightweight web front-end for health calculators and an SQL schema for sample fitness data.
+A Strive egy fitnesz- és jólléti platform prototípusa, amely a személyes egészségkövetésre, az edzéscoachingra és a célorientált tervezésre épül. A projekt egy .NET WPF asztali alkalmazást egy könnyű webes felülettel és egy MySQL/MariaDB-adatbázissémával egyesít.
 
-## Overview
+## Áttekintés
 
-This repository contains a demo project for a fitness app that helps users:
+Ez a tároló egy fitneszalkalmazás-demót tartalmaz, amely segít a felhasználóknak:
 
-- track their health and progress
-- calculate BMI and calorie needs
-- explore personal training and fitness plans
-- manage data for members, trainers, and workout programs
+- nyomon követni egészségi állapotukat és fejlődésüket
+- kiszámítani a BMI-t és a kalóriaszükségletet
+- megismerkedni a személyi edzéssel és a fitnesztervekkel
+- kezelni a tagok, edzők és edzésprogramok adatait
 
-The project is structured as a prototype and includes both desktop and web-facing components.
+A projekt prototípusként épül fel, és asztali, valamint webes komponenseket is tartalmaz.
 
-## Features
+## Funkciók
 
-- Home and authentication screens for a fitness platform
-- BMI calculator
-- Calorie calculator with gender and goal-based logic
-- Database schema for users, trainers, workout plans, and measurements
-- Sample fitness data for members and trainers
-- WPF desktop shell for the app
+- Kezdő- és hitelesítési képernyők egy fitneszplatformhoz
+- BMI-kalkulátor
+- Nem és cél alapján működő kalóriakalkulátor
+- Adatbázisséma felhasználók, edzők, edzéstervek és mérések kezeléséhez
+- Minta fitneszadatok tagokhoz és edzőkhöz
+- WPF-alapú asztali alkalmazásváz
 
-## Tech Stack
+## Technológiai háttér
 
 - C# / WPF (.NET Framework 4.8)
 - HTML
 - CSS
 - JavaScript
-- MySQL / MariaDB SQL schema
+- MySQL / MariaDB SQL-séma
 
-## Repository Structure
+## A tároló felépítése
 
 ```text
 Strive/
@@ -52,89 +52,89 @@ Strive/
 └── README.md
 ```
 
-## Included Modules
+## A projekt moduljai
 
-### Desktop App
-The desktop app is a WPF project initialized in `Strive/Strive.csproj` and provides the application shell for the project.
+### Asztali alkalmazás
+Az asztali alkalmazás a `Strive/Strive.csproj` fájlban beállított WPF-projekt, és ez biztosítja a projekt alkalmazásvázát.
 
-### Web Front End
-The web folder includes static pages and scripts for:
+### Webes felület
+A webes mappa statikus oldalakat és szkripteket tartalmaz az alábbiakhoz:
 
-- landing page (`Strive/Web/HTML/Strive.html`)
-- BMI calculator (`Strive/Web/HTML/BMI.html`)
-- calorie calculator (`Strive/Web/HTML/CalorieCalculator.html`)
+- nyitóoldal (`Strive/Web/HTML/Strive.html`)
+- BMI-kalkulátor (`Strive/Web/HTML/BMI.html`)
+- kalóriakalkulátor (`Strive/Web/HTML/CalorieCalculator.html`)
 
-These pages use JavaScript logic in:
+Ezek az oldalak az alábbi JavaScript-fájlokban található logikát használják:
 
 - `Strive/Web/JS/BMI.js`
 - `Strive/Web/JS/CalorieCalculator.js`
 
-### Database
-The sample MySQL database schema is defined in:
+### Adatbázis
+A minta MySQL-adatbázis sémáját az alábbi fájl határozza meg:
 
 - `Strive/Database/strive_database.sql`
 
-It includes tables such as:
+Többek között az alábbi táblákat tartalmazza:
 
 - `users`
 - `trainers`
 - `workout_plans`
 - `measurements_calculations`
 
-## Getting Started
+## Első lépések
 
-### Prerequisites
+### Előfeltételek
 
-- Visual Studio 2022 or later
+- Visual Studio 2022 vagy újabb verzió
 - .NET Framework 4.8
-- MySQL or MariaDB server
+- MySQL- vagy MariaDB-kiszolgáló
 
-### 1. Restore and open the solution
+### 1. A megoldás visszaállítása és megnyitása
 
-Open `Strive.sln` in Visual Studio.
+Nyisd meg a `Strive.sln` fájlt a Visual Studióban.
 
-### 2. Create the database
+### 2. Az adatbázis létrehozása
 
-Import the SQL file into a MariaDB/MySQL database named `strive_database`:
+Importáld az SQL-fájlt egy `strive_database` nevű MariaDB/MySQL-adatbázisba:
 
 ```bash
 mysql -u your_user -p < Strive/Database/strive_database.sql
 ```
 
-### 3. Run the application
+### 3. Az alkalmazás futtatása
 
-Build and run the WPF project from Visual Studio.
+Készítsd el és futtasd a WPF-projektet a Visual Studióból.
 
-## Usage
+## Használat
 
-The project currently serves as a prototype/demo platform with functional calculator pages and a database-ready foundation for a broader fitness application.
+A projekt jelenleg prototípusként/demóplatformként szolgál, működő kalkulátoroldalakkal és egy olyan alapokkal, amely készen áll egy átfogóbb fitneszalkalmazás adatbázisának kialakítására.
 
-Examples of available pages:
+Elérhető oldalak például:
 
-- landing page for the Strive brand
-- login/register demo UI
-- BMI calculation page
-- calorie requirement calculator
+- a Strive márka nyitóoldala
+- bejelentkezési/regisztrációs demófelület
+- BMI-kalkulátor
+- kalóriaszükséglet-kalkulátor
 
-## Project Status
+## A projekt állapota
 
-This project is a prototype focused on UI, data modeling, and health-related functionality. It is not yet a complete production-ready fitness platform.
+Ez a projekt egy prototípus, amely a felhasználói felületre, az adatmodellezésre és az egészséggel kapcsolatos funkciókra összpontosít. Még nem teljes, éles használatra kész fitneszplatform.
 
-## Roadmap
+## További fejlesztési lehetőségek
 
-Potential next steps include:
+A lehetséges következő lépések:
 
-- backend API integration
-- user authentication and authorization
-- persistent database connections
-- dashboards for user metrics and progress
-- trainer/member management workflows
-- deployment support and environment configuration
+- háttérbeli API-integráció
+- felhasználói hitelesítés és jogosultságkezelés
+- állandó adatbázis-kapcsolatok
+- irányítópultok a felhasználói mutatók és a fejlődés követéséhez
+- edző- és tagkezelési folyamatok
+- telepítési támogatás és környezeti konfiguráció
 
-## Related Links
+## Kapcsolódó hivatkozások
 
-- Trello board: https://trello.com/b/wXBgoemi/goaldiggers
+- Trello-tábla: https://trello.com/b/wXBgoemi/goaldiggers
 
-## Notes
+## Megjegyzések
 
-The current codebase is a strong starting point for a fitness app concept and demonstrates a realistic structure for a health-focused product with a WPF desktop front-end and web-based calculators.
+A jelenlegi kódbázis kiváló kiindulópont egy fitneszalkalmazás koncepciójához, és jól szemlélteti egy egészségközpontú termék reális felépítését WPF-alapú asztali felülettel és webes kalkulátoroldalakkal.
