@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Strive;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,7 +27,18 @@ namespace WpfApp1.Windows
 
         private void btnBejelentkezes_Click(object sender, RoutedEventArgs e)
         {
-
+            if (tbxFelhasznalonev.Text == "a" && pwbJelszo.Password == "a")
+            {
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
+                this.Close();
+            }
+            else
+            {
+                string hibasszoveg = "Hibás felhasználónév vagy jelszó!";
+                MessageBox.Show(hibasszoveg, "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
+                HibasText.Text = hibasszoveg;
+            }
         }
     }
 }
