@@ -1,0 +1,82 @@
+﻿<Window x:Class="WpfApp1.Windows.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1.Windows"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="Bejelentkezés" Height="450" Width="800"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{materialDesign:MaterialDesignFont}">
+    <Grid>
+        <StackPanel>
+
+            <Label Content="Strive" 
+                   HorizontalAlignment="Center"
+                   Margin="0,50,0,0"
+                   RenderTransformOrigin="0.56,5.191"
+                   FontSize="50"/>
+
+            <Border Margin="5,50,5,5"
+                    HorizontalAlignment="Center" 
+                    BorderBrush="Black" 
+                    BorderThickness="1" 
+                    Height="200" 
+                    Width="300"
+                    CornerRadius="20"
+                    Padding="15">
+
+                <StackPanel>
+
+                    <Label Content="Bejelentkezés"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,10"
+                       FontSize="20"
+                       FontWeight="Bold"/>
+
+                    <Grid Margin="0,0,0,20">
+                        <TextBlock x:Name="tblFelhasznalonev"
+                           Text="Felhasználónév"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                           Margin="10,0,0,0" />
+
+                        <TextBox x:Name="tbxFelhasznalonev"
+                             Width="125"
+                             HorizontalAlignment="Right"
+                             VerticalAlignment="Center"
+                             Margin="0,0,10,0"/>
+                    </Grid>
+
+                    <Grid>
+                        <TextBlock x:Name="tblJelszo"
+                           Text="Jelszó"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                           Margin="10,0,0,0" />
+
+                        <TextBox x:Name="tbxJelszo"
+                             Width="125"
+                             HorizontalAlignment="Right"
+                             VerticalAlignment="Center"
+                             Margin="0,0,10,0"/>
+                    </Grid>
+
+                    <Button x:Name="btnBejelentkezes"
+                            HorizontalAlignment="Center"
+                            Margin="25"
+                            Width="100"
+                            Height="30"
+                            Content="Bejelentkezés"
+                            FontSize="11"
+                            Click="btnBejelentkezes_Click"
+                            />
+
+                </StackPanel>
+            </Border>
+
+        </StackPanel>
+    </Grid>
+</Window>
