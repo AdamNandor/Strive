@@ -12,13 +12,20 @@
         FontFamily="{materialDesign:MaterialDesignFont}">
     <Grid>
         <StackPanel>
-
-            <Label Content="Strive" 
-                   HorizontalAlignment="Center"
-                   Margin="0,50,0,0"
-                   RenderTransformOrigin="0.56,5.191"
-                   FontSize="50"/>
-
+            <StackPanel Orientation="Horizontal"
+                        Margin="0,50,0,0"
+                        HorizontalAlignment="Center">
+                <Label Content="strive" 
+                       HorizontalAlignment="Center"
+                       FontSize="50"
+                       FontWeight="Bold"/>
+                <Label Content="."
+                       HorizontalAlignment="Center"
+                       FontSize="50"
+                       FontWeight="Bold"
+                       Margin="-5,0,0,0"
+                       Foreground="GreenYellow"/>
+            </StackPanel>
             <Border Margin="5,30,5,5"
                     HorizontalAlignment="Center" 
                     BorderBrush="Black" 
