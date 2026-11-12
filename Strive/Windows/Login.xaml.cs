@@ -36,7 +36,6 @@ namespace WpfApp1.Windows
             else
             {
                 string hibasszoveg = "Hibás felhasználónév vagy jelszó!";
-                MessageBox.Show(hibasszoveg, "Hiba", MessageBoxButton.OK, MessageBoxImage.Error);
                 HibasText.Text = hibasszoveg;
             }
         }

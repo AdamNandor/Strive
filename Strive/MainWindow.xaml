@@ -11,6 +11,19 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{materialDesign:MaterialDesignFont}">
     <Grid>
-        
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_Fájl">
+                    <MenuItem Header="adatok _Mentése">
+                    </MenuItem>
+                    <MenuItem Header="adatok _Visszatöltése">
+                    </MenuItem>
+                    <MenuItem Header="_Kilépés" Click="Exit" Style="{StaticResource MaterialDesignMenuItem}"/>
+                </MenuItem>
+                <MenuItem Header="_Adatkarbantartás">
+                    <MenuItem Header="Felhasználók adatai" Click="FelhasznalokKarbantartasa"/>
+                </MenuItem>
+            </Menu>
+        </DockPanel>
     </Grid>
 </Window>
