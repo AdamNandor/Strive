@@ -88,5 +88,66 @@ namespace WpfApp1.Services
                 }
             }
         }
+
+        public void DeleteUser(int id) 
+        {
+            try
+            {
+                _connection.Open();
+                string sql = "DELETE FROM `user` WHERE `id` = @id;";
+                using (MySqlCommand command = new MySqlCommand(sql, _connection))
+                {
+                    command.Parameters.AddWithValue("@id", id);
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+
+            }
+            finally
+            {
+                if (_connection.State == ConnectionState.Open)
+                {
+                    _connection.Close();
+                }
+            }
+        }
+
+        public bool CreateUser(string name, string email, string passwordHash, string role)
+        {
+            try
+            {
+                if (_connection.State != ConnectionState.Open)
+                {
+                    _connection.Open();
+                }
+
+                string sql = "INSERT INTO `user` (`name`, `email`, `password_hash`, `role`, `created_at`) VALUES (@name, @email, @password_hash, @role, NOW());";
+                using (MySqlCommand command = new MySqlCommand(sql, _connection))
+                {
+                    command.Parameters.AddWithValue("@name", name);
+                    command.Parameters.AddWithValue("@email", email);
+                    command.Parameters.AddWithValue("@password_hash", passwordHash);
+                    command.Parameters.AddWithValue("@role", role);
+
+                    command.ExecuteNonQuery();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show("Hiba a felhasználó létrehozása során: " + ex.Message);
+                return false;
+            }
+            finally
+            {
+                if (_connection.State == ConnectionState.Open)
+                {
+                    _connection.Close();
+                }
+            }
+        }
     }
 }

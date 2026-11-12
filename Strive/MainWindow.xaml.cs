@@ -55,6 +55,10 @@ namespace Strive
         {
             if (lbxFelhasznalok.SelectedItem is Felhasznalo kivalasztott)
             {
+                spUjFelhasznalo.Visibility = Visibility.Collapsed;
+                spAdatok.Visibility = Visibility.Visible;
+
+                lblAdatok.Content = "ADATOK";
                 Id = kivalasztott.Id;
                 tbxNev.Text = kivalasztott.Name;
                 tbxEmail.Text = kivalasztott.Email;
@@ -71,7 +75,45 @@ namespace Strive
 
         private void btnTorles_Click(object sender, RoutedEventArgs e)
         {
+            MessageBoxResult result = MessageBox.Show($"Biztosan kitörli a(z) {Id} sorszámú felhasználót?", "Törlés", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes)
+            {
+                felhasznaloService.DeleteUser(Id);
+                MessageBox.Show($"Sikeresen kitörölte a {Id}. sorszámú felhasználót");
+                LoadUsers();
+            }
+            
+        }
 
+        private void btnUjFelhasznalo_Click(object sender, RoutedEventArgs e)
+        {
+            lbxFelhasznalok.SelectedItem = null;
+            spAdatok.Visibility = Visibility.Collapsed;
+            spUjFelhasznalo.Visibility = Visibility.Visible;
+        }
+
+        private void btnLetrehozas_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show($"Biztosan létrehoz egy új felhasználót?", "Létrehozás", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes)
+            {
+                string passwordHash = BCrypt.Net.BCrypt.HashPassword(pwbUjJelszo.Password, 10);
+                bool sikeres = felhasznaloService.CreateUser(tbxUjNev.Text, tbxUjEmail.Text, passwordHash, cbxRole.Text);
+
+                if (sikeres) 
+                {
+                    MessageBox.Show("Új felhasználó sikeresen létrehozva!");
+                    spUjFelhasznalo.Visibility = Visibility.Collapsed;
+                    spAdatok.Visibility = Visibility.Visible;
+                    LoadUsers();
+                }
+            }
+        }
+
+        private void btnMegsem_Click(object sender, RoutedEventArgs e)
+        {
+            spUjFelhasznalo.Visibility = Visibility.Collapsed;
+            spAdatok.Visibility = Visibility.Visible;
         }
     }
 }

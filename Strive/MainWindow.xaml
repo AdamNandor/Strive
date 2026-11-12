@@ -27,7 +27,7 @@
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Left">
                 <Label Content="strive" 
-                       Margin="5"
+                       Margin="10,5,5,5"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center"
                        FontSize="18"
@@ -49,13 +49,13 @@
                        FontSize="18"
                        FontWeight="Bold"/>
             </StackPanel>
-            
+
         </Border>
 
         <StackPanel Margin="5,40,0,0"
                     Orientation="Horizontal">
             <Label Content="Keresés:"
-                   Margin="5,5,0,0"
+                   Margin="10,5,0,0"
                    Height="20"
                    FontWeight="Bold"
                    FontSize="12"
@@ -68,6 +68,17 @@
                      Margin="5,0,0,0"/>
 
         </StackPanel>
+        <StackPanel Grid.Column="1"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right">
+        <Button x:Name="btnUjFelhasznalo"
+                Content="+ Új felhasználó"
+                Height="28"
+                VerticalAlignment="Bottom"
+                Margin="0,0,15,10"
+                Click="btnUjFelhasznalo_Click"/>
+        </StackPanel>
+
         <Border Grid.Row="1"
                 Margin="10,0,15,10"
                 CornerRadius="8"
@@ -85,63 +96,129 @@
         </Border>
         <Border Grid.Row="1"
                 Grid.Column="1"
-                Margin="10,0,15,10"
+                Margin="10,0,10,10"
                 CornerRadius="8"
                 Background="#252924">
-                <StackPanel >
-                    <Label Content="ADATOK"
+            <Grid>
+                <!--1. Felhasználók módosítására szánt panel-->
+                <StackPanel Name="spAdatok" Visibility="Visible" >
+                    <Label Name="lblAdatok"
+                           Content="ADATOK"
                            Margin="5,5,5,10"
                            FontSize="15"/>
-                    
+
                     <Label Content="Név:"
-                           Margin="20,5,20,0"/>
+                               Margin="20,5,20,0"/>
                     <TextBox Name="tbxNev"
-                             VerticalAlignment="Center"
-                             Height="25"
-                             Margin="40,0,40,20"/>
-                    
+                                 VerticalAlignment="Center"
+                                 Height="25"
+                                 Margin="40,0,40,20"/>
+
                     <Label Content="Email:"
-                           Margin="20,5,20,0"/>
+                               Margin="20,5,20,0"/>
                     <TextBox Name="tbxEmail"
-                             VerticalAlignment="Center"
-                             Height="25"
-                             Margin="40,0,40,20"/>
+                                 VerticalAlignment="Center"
+                                 Height="25"
+                                 Margin="40,0,40,20"/>
 
                     <Label Content="Role:"
-                           Margin="20,5,10,0"/>
+                               Margin="20,5,10,0"/>
                     <ComboBox Name="cbxRole"
+                                  VerticalAlignment="Center"
+                                  Height="25"
+                                  Margin="40,0,40,20">
+                        <ComboBoxItem Content="member"/>
+                        <ComboBoxItem Content="admin"/>
+                        <ComboBoxItem Content="trainer"/>
+                    </ComboBox>
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                Margin="10,5,10,0">
+                        <Button x:Name="btnMentes"
+                                Content="Mentés"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                Margin="0,0,10,0"
+                                Height="30"
+                                Width="100"
+                                Click="btnMentes_Click"/>
+
+                        <Button x:Name="btnTorles"
+                                Content="Törlés"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                Margin="10,0,0,0"
+                                Height="30"
+                                Width="100"
+                                Background="Red"
+                                Foreground="White"
+                                Click="btnTorles_Click"/>
+                    </StackPanel>
+                </StackPanel>
+                <!--2. Új felhasználók létrehozására való panel-->
+                <StackPanel Name="spUjFelhasznalo" Visibility="Collapsed">
+                    <Label Name="lblUjAdatok"
+                           Content="ÚJ FELHASZNÁLÓ LÉTREHOZÁSA"
+                           Margin="5,5,5,10"
+                           FontSize="15"/>
+
+                    <Label Content="Név:"
+                           Margin="20,5,20,0"/>
+                    <TextBox Name="tbxUjNev"
+                             VerticalAlignment="Center"
+                             Height="25"
+                             Margin="40,0,40,5"/>
+
+                    <Label Content="Jelszó:"
+                           Margin="20,5,20,0"/>
+                    <PasswordBox Name="pwbUjJelszo"
+                             VerticalAlignment="Center"
+                             Height="25"
+                             Margin="40,0,40,5"/>
+
+                    <Label Content="Email:"
+                           Margin="20,0,20,0"/>
+                    <TextBox Name="tbxUjEmail"
+                             VerticalAlignment="Center"
+                             Height="25"
+                             Margin="40,0,40,5"/>
+
+                    <Label Content="Role:"
+                           Margin="20,0,10,0"/>
+                    <ComboBox Name="cbxUjRole"
                               VerticalAlignment="Center"
                               Height="25"
-                              Margin="40,0,40,20">
-                              <ComboBoxItem Content="member"/>
-                              <ComboBoxItem Content="admin"/>
-                              <ComboBoxItem Content="trainer"/>
+                              Margin="40,0,40,5">
+                        <ComboBoxItem Content="member"/>
+                        <ComboBoxItem Content="admin"/>
+                        <ComboBoxItem Content="trainer"/>
                     </ComboBox>
-                <StackPanel Orientation="Horizontal"
-                            HorizontalAlignment="Center"
-                            Margin="10,5,10,0">
-                    <Button x:Name="btnMentes"
-                            Content="Mentés"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Top"
-                            Margin="0,0,10,0"
-                            Height="30"
-                            Width="100"
-                            Click="btnMentes_Click"/>
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                Margin="10,10,10,0">
+                        <Button x:Name="btnLetrehozas"
+                                Content="Létrehozás"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                Margin="0,0,10,0"
+                                Height="30"
+                                Width="100"
+                                Click="btnLetrehozas_Click"/>
 
-                    <Button x:Name="btnTorles"
-                            Content="Törlés"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Top"
-                            Margin="10,0,0,0"
-                            Height="30"
-                            Width="100"
-                            Background="Red"
-                            Foreground="White"
-                            Click="btnTorles_Click"/>
+                        <Button x:Name="btnMegsem"
+                                Content="Mégsem"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                Margin="10,0,0,0"
+                                Height="30"
+                                Width="100"
+                                Background="Red"
+                                Foreground="White"
+                                Click="btnMegsem_Click"/>
+                    </StackPanel>
                 </StackPanel>
-            </StackPanel>
-                
+           </Grid>
+
         </Border>
     </Grid>
 </Window>
