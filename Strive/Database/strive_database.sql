@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2026. Nov 01. 18:02
+-- Létrehozás ideje: 2026. Nov 12. 14:02
 -- Kiszolgáló verziója: 10.4.32-MariaDB
 -- PHP verzió: 8.2.12
 
@@ -26,10 +26,10 @@ USE `strive_database`;
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `measurements_calculations`
+-- Tábla szerkezet ehhez a táblához `measurements_calculation`
 --
 
-CREATE TABLE `measurements_calculations` (
+CREATE TABLE `measurements_calculation` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `weight` decimal(5,2) NOT NULL,
@@ -44,10 +44,10 @@ CREATE TABLE `measurements_calculations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- A tábla adatainak kiíratása `measurements_calculations`
+-- A tábla adatainak kiíratása `measurements_calculation`
 --
 
-INSERT INTO `measurements_calculations` (`id`, `user_id`, `weight`, `height`, `age`, `gender`, `bmi_value`, `basal_metabolic_rate`, `daily_calories`, `calorie_type`, `measurement_date`) VALUES
+INSERT INTO `measurements_calculation` (`id`, `user_id`, `weight`, `height`, `age`, `gender`, `bmi_value`, `basal_metabolic_rate`, `daily_calories`, `calorie_type`, `measurement_date`) VALUES
 (1, 3, 85.50, 180, 28, 'male', 26.39, 1850, 2400, 'maintenance', '2026-02-01 09:00:00'),
 (2, 3, 83.20, 180, 28, 'male', 25.68, 1820, 2100, 'deficit', '2026-02-15 09:00:00'),
 (3, 4, 62.00, 165, 24, 'female', 22.77, 1420, 1900, 'surplus', '2026-02-02 10:00:00'),
@@ -72,10 +72,10 @@ INSERT INTO `measurements_calculations` (`id`, `user_id`, `weight`, `height`, `a
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `trainers`
+-- Tábla szerkezet ehhez a táblához `trainer`
 --
 
-CREATE TABLE `trainers` (
+CREATE TABLE `trainer` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `specialization` varchar(255) DEFAULT NULL,
@@ -83,10 +83,10 @@ CREATE TABLE `trainers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- A tábla adatainak kiíratása `trainers`
+-- A tábla adatainak kiíratása `trainer`
 --
 
-INSERT INTO `trainers` (`id`, `user_id`, `specialization`, `bio`) VALUES
+INSERT INTO `trainer` (`id`, `user_id`, `specialization`, `bio`) VALUES
 (1, 1, 'Erőemelés és Testépítés', 'Több mint 8 év tapasztalat a személyi edzésben.'),
 (2, 2, 'Funkcionális edzés és Fogyás', 'A hatékony zsírégetésre és helyes mozgásra szakosodva.'),
 (3, 8, 'CrossFit & Alakformálás', 'Segítek elérni a legmagasabb fizikai formádat biztonságosan.'),
@@ -95,10 +95,10 @@ INSERT INTO `trainers` (`id`, `user_id`, `specialization`, `bio`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `users`
+-- Tábla szerkezet ehhez a táblához `user`
 --
 
-CREATE TABLE `users` (
+CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `email` varchar(150) NOT NULL,
@@ -108,10 +108,10 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- A tábla adatainak kiíratása `users`
+-- A tábla adatainak kiíratása `user`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `password_hash`, `role`, `created_at`) VALUES
+INSERT INTO `user` (`id`, `name`, `email`, `password_hash`, `role`, `created_at`) VALUES
 (1, 'Kovács Péter', 'peter.trainer@example.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHeFXxY8.pYhZ8q9gJ8nK6/Y0e3YwJ.G1W', 'trainer', '2026-01-10 07:00:00'),
 (2, 'Nagy Anna', 'anna.trainer@example.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHeFXxY8.pYhZ8q9gJ8nK6/Y0e3YwJ.G1W', 'trainer', '2026-01-11 08:15:00'),
 (3, 'Tóth Gábor', 'gabor.member@example.com', '$2y$10$e0MYzXyjpJS7Pd0RVvHwHeFXxY8.pYhZ8q9gJ8nK6/Y0e3YwJ.G1W', 'member', '2026-01-12 09:20:00'),
@@ -136,10 +136,10 @@ INSERT INTO `users` (`id`, `name`, `email`, `password_hash`, `role`, `created_at
 -- --------------------------------------------------------
 
 --
--- Tábla szerkezet ehhez a táblához `workout_plans`
+-- Tábla szerkezet ehhez a táblához `workout_plan`
 --
 
-CREATE TABLE `workout_plans` (
+CREATE TABLE `workout_plan` (
   `id` int(11) NOT NULL,
   `title` varchar(150) NOT NULL,
   `description` text DEFAULT NULL,
@@ -149,10 +149,10 @@ CREATE TABLE `workout_plans` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- A tábla adatainak kiíratása `workout_plans`
+-- A tábla adatainak kiíratása `workout_plan`
 --
 
-INSERT INTO `workout_plans` (`id`, `title`, `description`, `trainer_id`, `member_id`, `creation_date`) VALUES
+INSERT INTO `workout_plan` (`id`, `title`, `description`, `trainer_id`, `member_id`, `creation_date`) VALUES
 (1, 'Kezdő Teljes Test Edzés', 'Heti 3 napos A/B bontású alapgyakorlatos edzésterv.', 1, 3, '2026-02-01 09:00:00'),
 (2, 'Zsírégető HIIT Kör', 'Intenzív köredzés 45 másodperces blokkokkal.', 2, 4, '2026-02-02 10:00:00'),
 (3, 'Tömegnövelő Felsőtest', 'Mell, váll, tricepsz fókuszú intenzív program.', 1, 6, '2026-02-03 11:00:00'),
@@ -179,29 +179,29 @@ INSERT INTO `workout_plans` (`id`, `title`, `description`, `trainer_id`, `member
 --
 
 --
--- A tábla indexei `measurements_calculations`
+-- A tábla indexei `measurements_calculation`
 --
-ALTER TABLE `measurements_calculations`
+ALTER TABLE `measurements_calculation`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_id` (`user_id`);
 
 --
--- A tábla indexei `trainers`
+-- A tábla indexei `trainer`
 --
-ALTER TABLE `trainers`
+ALTER TABLE `trainer`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_id` (`user_id`);
 
 --
--- A tábla indexei `users`
+-- A tábla indexei `user`
 --
-ALTER TABLE `users`
+ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- A tábla indexei `workout_plans`
+-- A tábla indexei `workout_plan`
 --
-ALTER TABLE `workout_plans`
+ALTER TABLE `workout_plan`
   ADD PRIMARY KEY (`id`),
   ADD KEY `trainer_id` (`trainer_id`),
   ADD KEY `member_id` (`member_id`);
@@ -211,27 +211,27 @@ ALTER TABLE `workout_plans`
 --
 
 --
--- AUTO_INCREMENT a táblához `measurements_calculations`
+-- AUTO_INCREMENT a táblához `measurements_calculation`
 --
-ALTER TABLE `measurements_calculations`
+ALTER TABLE `measurements_calculation`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- AUTO_INCREMENT a táblához `trainers`
+-- AUTO_INCREMENT a táblához `trainer`
 --
-ALTER TABLE `trainers`
+ALTER TABLE `trainer`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT a táblához `users`
+-- AUTO_INCREMENT a táblához `user`
 --
-ALTER TABLE `users`
+ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- AUTO_INCREMENT a táblához `workout_plans`
+-- AUTO_INCREMENT a táblához `workout_plan`
 --
-ALTER TABLE `workout_plans`
+ALTER TABLE `workout_plan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
@@ -239,23 +239,23 @@ ALTER TABLE `workout_plans`
 --
 
 --
--- Megkötések a táblához `measurements_calculations`
+-- Megkötések a táblához `measurements_calculation`
 --
-ALTER TABLE `measurements_calculations`
-  ADD CONSTRAINT `fk_measurements_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+ALTER TABLE `measurements_calculation`
+  ADD CONSTRAINT `fk_measurements_users` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE;
 
 --
--- Megkötések a táblához `trainers`
+-- Megkötések a táblához `trainer`
 --
-ALTER TABLE `trainers`
-  ADD CONSTRAINT `fk_trainers_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+ALTER TABLE `trainer`
+  ADD CONSTRAINT `fk_trainers_users` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE;
 
 --
--- Megkötések a táblához `workout_plans`
+-- Megkötések a táblához `workout_plan`
 --
-ALTER TABLE `workout_plans`
-  ADD CONSTRAINT `fk_workouts_member` FOREIGN KEY (`member_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `fk_workouts_trainer` FOREIGN KEY (`trainer_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+ALTER TABLE `workout_plan`
+  ADD CONSTRAINT `fk_workouts_member` FOREIGN KEY (`member_id`) REFERENCES `user` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `fk_workouts_trainer` FOREIGN KEY (`trainer_id`) REFERENCES `user` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
