@@ -6,24 +6,31 @@
         xmlns:local="clr-namespace:Strive"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Menu rendszer" Height="450" Width="800"
+        Title="Adminisztrációs menü" Height="450" Width="800"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{materialDesign:MaterialDesignFont}">
     <Grid>
-        <DockPanel>
-            <Menu DockPanel.Dock="Top">
-                <MenuItem Header="_Fájl">
-                    <MenuItem Header="adatok _Mentése">
-                    </MenuItem>
-                    <MenuItem Header="adatok _Visszatöltése">
-                    </MenuItem>
-                    <MenuItem Header="_Kilépés" Click="Exit" Style="{StaticResource MaterialDesignMenuItem}"/>
-                </MenuItem>
-                <MenuItem Header="_Adatkarbantartás">
-                    <MenuItem Header="Felhasználók adatai" Click="FelhasznalokKarbantartasa"/>
-                </MenuItem>
-            </Menu>
-        </DockPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="7*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="4*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel>
+            <Label Content="Adminisztrációs felület"
+                   Grid.ColumnSpan="2"
+                   Margin="5,10,5,0"
+                   HorizontalContentAlignment="Left"
+                   VerticalAlignment="Top"
+                   FontSize="17"
+                   FontWeight="Bold"
+                   Background="DimGray"
+                   />
+            <TextBox Margin="5,15,5,0"
+                     />
+        </StackPanel>
     </Grid>
 </Window>
