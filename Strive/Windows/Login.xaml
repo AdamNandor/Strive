@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="Bejelentkezés" Height="450" Width="800"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-        Background="{DynamicResource MaterialDesignPaper}"
+        Background="#101311"
         FontFamily="{materialDesign:MaterialDesignFont}">
     <Grid>
         <StackPanel>
@@ -23,7 +23,7 @@
                        HorizontalAlignment="Center"
                        FontSize="50"
                        FontWeight="Bold"
-                       Margin="-5,0,0,0"
+                       Margin="-10,0,0,0"
                        Foreground="GreenYellow"/>
             </StackPanel>
             <Border Margin="5,30,5,5"
@@ -33,7 +33,8 @@
                     Height="230" 
                     Width="300"
                     CornerRadius="20"
-                    Padding="15">
+                    Padding="15"
+                    Background="#252924">
 
                 <StackPanel>
 

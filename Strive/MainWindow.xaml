@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="Adminisztrációs menü" Height="450" Width="800"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-        Background="{DynamicResource MaterialDesignPaper}"
+        Background="#101311"
         FontFamily="{materialDesign:MaterialDesignFont}">
     <Grid>
         <Grid.RowDefinitions>
@@ -27,7 +27,8 @@
 
             <Label Content="Adminisztrációs felület"
                    FontSize="18"
-                   FontWeight="Bold"/>
+                   FontWeight="Bold"
+                   Background="#252924"/>
         </Border>
 
         <StackPanel Margin="5,40,0,0"
@@ -49,7 +50,7 @@
         <Border Grid.Row="1"
                 Margin="10,0,5,10"
                 CornerRadius="8"
-                Background="DimGray">
+                Background="#252924">
             <StackPanel >
                 <Label Content="FELHASZNÁLÓK"
                        Margin="5"
