@@ -20,26 +20,12 @@ namespace Strive
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static bool bejelentkezve = false;
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void Exit(object sender, EventArgs e)
-        {
-            MessageBoxResult result = MessageBox.Show("Biztosan ki akarsz lépni a programból?", "Kilépés", MessageBoxButton.YesNo);
-            if (result == MessageBoxResult.Yes)
-            {
-                Application.Current.Shutdown();
-            }
-        }
-
-        private void FelhasznalokKarbantartasa(object sender, RoutedEventArgs e)
-        {
-            WpfApp1.Windows.Felhasznalok felhasznalok = new WpfApp1.Windows.Felhasznalok();
-            felhasznalok.Show();
-        }
+       
 
     }
 }
