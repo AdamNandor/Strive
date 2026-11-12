@@ -24,17 +24,38 @@
                 Background="#252924"
                 Margin="10,10,10,0"
                 VerticalAlignment="Top">
-
-            <Label Content="Adminisztrációs felület"
-                   Margin="5"
-                   FontSize="18"
-                   FontWeight="Bold"/>
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Left">
+                <Label Content="strive" 
+                       Margin="5"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       FontSize="18"
+                       FontWeight="Bold"/>
+                <Label Content="."
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="18"
+                       FontWeight="Bold"
+                       Margin="-10,0,0,0"
+                       Foreground="GreenYellow"/>
+                <Label Content="|"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Top"
+                       FontSize="25"/>
+                <Label Content="Adminisztrációs felület"
+                       VerticalAlignment="Center"
+                       Margin="5"
+                       FontSize="18"
+                       FontWeight="Bold"/>
+            </StackPanel>
+            
         </Border>
 
         <StackPanel Margin="5,40,0,0"
                     Orientation="Horizontal">
             <Label Content="Keresés:"
-                   Margin="5,0,0,0"
+                   Margin="5,5,0,0"
                    Height="20"
                    FontWeight="Bold"
                    FontSize="12"
@@ -48,7 +69,7 @@
 
         </StackPanel>
         <Border Grid.Row="1"
-                Margin="10,0,5,10"
+                Margin="10,0,15,10"
                 CornerRadius="8"
                 Background="#252924">
             <StackPanel >
@@ -58,8 +79,67 @@
                 <ListBox Name="lbxFelhasznalok"
                          Margin="5,5,5,5"
                          Height="280"
+                         SelectionChanged="lbxFelhasznalok_SelectionChanged"
                          />
             </StackPanel>
+        </Border>
+        <Border Grid.Row="1"
+                Grid.Column="1"
+                Margin="10,0,15,10"
+                CornerRadius="8"
+                Background="#252924">
+                <StackPanel >
+                    <Label Content="ADATOK"
+                           Margin="5,5,5,10"
+                           FontSize="15"/>
+                    
+                    <Label Content="Név:"
+                           Margin="20,5,20,0"/>
+                    <TextBox Name="tbxNev"
+                             VerticalAlignment="Center"
+                             Height="25"
+                             Margin="40,0,40,20"/>
+                    
+                    <Label Content="Email:"
+                           Margin="20,5,20,0"/>
+                    <TextBox Name="tbxEmail"
+                             VerticalAlignment="Center"
+                             Height="25"
+                             Margin="40,0,40,20"/>
+
+                    <Label Content="Role:"
+                           Margin="20,5,10,0"/>
+                    <ComboBox Name="cbxRole"
+                              VerticalAlignment="Center"
+                              Height="25"
+                              Margin="40,0,40,20">
+                              <ComboBoxItem Content="member"/>
+                              <ComboBoxItem Content="admin"/>
+                              <ComboBoxItem Content="trainer"/>
+                    </ComboBox>
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            Margin="10,5,10,0">
+                    <Button x:Name="btnMentes"
+                            Content="Mentés"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Margin="0,0,10,0"
+                            Height="30"
+                            Width="100"/>
+
+                    <Button x:Name="btnTorles"
+                            Content="Törlés"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Margin="10,0,0,0"
+                            Height="30"
+                            Width="100"
+                            Background="Red"
+                            Foreground="White"/>
+                </StackPanel>
+            </StackPanel>
+                
         </Border>
     </Grid>
 </Window>
