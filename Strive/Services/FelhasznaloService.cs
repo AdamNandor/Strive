@@ -1,6 +1,8 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI.Common;
+using System;
 using System.Collections.Generic;
-using MySql.Data.MySqlClient;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -48,6 +50,42 @@ namespace WpfApp1.Services
             {
                 Console.WriteLine(ex);
                 return result;
+            }
+            finally
+            {
+                if (_connection.State == ConnectionState.Open)
+                {
+                    _connection.Close();
+                }
+            }
+        }
+
+        public void UpdateUser(int id, string name, string email, string role)
+        {
+            try
+            {
+                _connection.Open();
+                string sql = "UPDATE `user` SET `name` = @name, `email` = @email, `role` = @role WHERE `id` = @id;";
+                using (MySqlCommand command = new MySqlCommand(sql, _connection))
+                {
+                    command.Parameters.AddWithValue("@name", name);
+                    command.Parameters.AddWithValue("@email", email);
+                    command.Parameters.AddWithValue("@role", role);
+                    command.Parameters.AddWithValue("@id", id);
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                
+            }
+            finally
+            {
+                if (_connection.State == ConnectionState.Open)
+                {
+                    _connection.Close();
+                }
             }
         }
     }

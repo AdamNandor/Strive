@@ -24,7 +24,9 @@ namespace Strive
     public partial class MainWindow : Window
     {
         MySqlConnection mySqlConnection;
+        private FelhasznaloService felhasznaloService;
         private List<Felhasznalo> felhasznalok = new List<Felhasznalo>();
+        private int Id;
         public MainWindow()
         {
             InitializeComponent();
@@ -32,6 +34,7 @@ namespace Strive
             {
                 string connStr = "SERVER = localhost; PORT = 3306; DATABASE = strive_database; USER = root; PASSWORD=;";
                 mySqlConnection = new MySqlConnection(connStr);
+                felhasznaloService = new FelhasznaloService(mySqlConnection);
                 LoadUsers();
             }
             catch (Exception ex)
@@ -43,19 +46,32 @@ namespace Strive
         private void LoadUsers()
         {
             felhasznalok.Clear();
-            felhasznalok = new FelhasznaloService(mySqlConnection).GetAllUser();
+            felhasznalok = felhasznaloService.GetAllUser();
             lbxFelhasznalok.ItemsSource = felhasznalok;
         }
 
 
-        private void lbxFelhasznalok_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        public void lbxFelhasznalok_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (lbxFelhasznalok.SelectedItem is Felhasznalo kivalasztott)
             {
+                Id = kivalasztott.Id;
                 tbxNev.Text = kivalasztott.Name;
                 tbxEmail.Text = kivalasztott.Email;
                 cbxRole.Text = kivalasztott.Role;
             }
+        }
+
+        private void btnMentes_Click(object sender, RoutedEventArgs e)
+        {
+            felhasznaloService.UpdateUser(Id, tbxNev.Text, tbxEmail.Text, cbxRole.Text);
+            MessageBox.Show($"Sikeres mentés! Változás: {Id}. név: {tbxNev.Text}, email: {tbxEmail.Text}, szerep: {cbxRole.Text}");
+            LoadUsers();
+        }
+
+        private void btnTorles_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

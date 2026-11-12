@@ -126,7 +126,8 @@
                             VerticalAlignment="Top"
                             Margin="0,0,10,0"
                             Height="30"
-                            Width="100"/>
+                            Width="100"
+                            Click="btnMentes_Click"/>
 
                     <Button x:Name="btnTorles"
                             Content="Törlés"
@@ -136,7 +137,8 @@
                             Height="30"
                             Width="100"
                             Background="Red"
-                            Foreground="White"/>
+                            Foreground="White"
+                            Click="btnTorles_Click"/>
                 </StackPanel>
             </StackPanel>
                 
