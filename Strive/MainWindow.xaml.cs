@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WpfApp1.Models;
 using WpfApp1.Services;
+using Isopoh.Cryptography.Argon2;
 
 namespace Strive
 {
