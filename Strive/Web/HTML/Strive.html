@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0b0d0c">
 <title>Strive — Fitness Platform</title>
-<link rel="stylesheet" href="/Strive/Web/CSS/strive.css">
+<link rel="stylesheet" href="../CSS/Strive.css">
 </head>
 <body>
 
@@ -130,21 +130,75 @@
   <footer>© 2026 Strive. Minden jog fenntartva.</footer>
 
   <script>
-    function showPage(page) {
-      document.getElementById('home').style.display = page === 'home' ? 'block' : 'none';
-      document.getElementById('login').classList.toggle('active', page === 'login');
-      document.getElementById('register').classList.toggle('active', page === 'register');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+  const API_URL = "http://localhost:5000";
 
-    function submitDemo(event, type) {
-      event.preventDefault();
-      const messageEl = document.getElementById(type + 'Message');
-      messageEl.textContent = type === 'login'
-        ? 'A felület kész. A valódi belépéshez backend szükséges.'
-        : 'A felület kész. A regisztráció mentéséhez adatbázis szükséges.';
+  function showPage(page) {
+    document.getElementById('home').style.display = page === 'home' ? 'block' : 'none';
+    document.getElementById('login').classList.toggle('active', page === 'login');
+    document.getElementById('register').classList.toggle('active', page === 'register');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  async function submitDemo(event, type) {
+    event.preventDefault();
+    const messageEl = document.getElementById(type + 'Message');
+    messageEl.textContent = 'Feldolgozás...';
+    messageEl.style.color = '#ccc';
+
+    try {
+      if (type === 'register') {
+        const adatok = {
+          name: document.getElementById('fullName').value.trim(),
+          email: document.getElementById('registerEmail').value.trim(),
+          password: document.getElementById('registerPassword').value
+        };
+
+        const valasz = await fetch(`${API_URL}/api/register`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(adatok)
+        });
+
+        const eredmeny = await valasz.json();
+        messageEl.textContent = eredmeny.uzenet;
+        messageEl.style.color = valasz.ok ? '#4ade80' : '#f87171';
+
+        if (valasz.ok) {
+          event.target.reset();
+        }
+      } else if (type === 'login') {
+        const adatok = {
+          email: document.getElementById('loginEmail').value.trim(),
+          password: document.getElementById('loginPassword').value
+        };
+
+        const valasz = await fetch(`${API_URL}/api/login`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(adatok)
+        });
+
+        const eredmeny = await valasz.json();
+
+        if (valasz.ok) {
+          messageEl.textContent = `Sikeres belépés! Üdv, ${eredmeny.name}!`;
+          messageEl.style.color = '#4ade80';
+          localStorage.setItem('striveUser', JSON.stringify({
+            id: eredmeny.id,
+            name: eredmeny.name,
+            role: eredmeny.role
+          }));
+        } else {
+          messageEl.textContent = eredmeny.uzenet;
+          messageEl.style.color = '#f87171';
+        }
+      }
+    } catch (hiba) {
+      messageEl.textContent = 'Nem sikerült kapcsolódni a szerverhez.';
+      messageEl.style.color = '#f87171';
     }
-  </script>
+  }
+</script>
 
 </body>
 </html>
