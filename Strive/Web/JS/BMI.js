@@ -1,30 +1,20 @@
-function calculateBMI() {
-    const weight = parseFloat(document.getElementById('weight').value);
-    const height = parseFloat(document.getElementById('height').value) / 100;
-    const resultElement = document.getElementById('result');
+const bmiForm = document.getElementById('bmiForm');
 
-    if (isNaN(weight) || isNaN(height) || weight <= 0 || height <= 0) {
-        resultElement.textContent = 'Kérlek, adj meg érvényes adatokat.';
-        return;
-    }
-    
-    const bmi = weight / (height * height);
-    
-    returnCategory(bmi, resultElement);
-}
+bmiForm.addEventListener('submit', (event) => {
+  event.preventDefault();
 
-function returnCategory(bmi, resultElement) {
-    let category = '';
+  const weight = Number(document.getElementById('weight').value);
+  const heightCm = Number(document.getElementById('height').value);
+  if (!Number.isFinite(weight) || !Number.isFinite(heightCm) || weight <= 0 || heightCm <= 0) return;
 
-    if (bmi < 18.5) {
-        category = 'Sovány';
-    } else if (bmi >= 18.5 && bmi < 25) {
-        category = 'Normál testsúly';
-    } else if (bmi >= 25 && bmi < 30) {
-        category = 'Túlsúly';
-    } else {
-        category = 'Elhízás';
-    }
+  const bmi = weight / ((heightCm / 100) ** 2);
+  let category;
+  if (bmi < 18.5) category = 'alacsony testsúly tartomány';
+  else if (bmi < 25) category = 'normál testsúly tartomány';
+  else if (bmi < 30) category = 'túlsúly tartomány';
+  else category = 'elhízás tartomány';
 
-    resultElement.textContent = `A BMI-d: ${bmi.toFixed(2)} (${category})`;
-}
+  const result = document.getElementById('result');
+  result.innerHTML = `<p class="result-label">A becsült BMI értéked</p><p class="result-value">${bmi.toLocaleString('hu-HU', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}</p><p class="result-category">${category}</p><p class="result-note">A BMI általános tájékoztató mutató, nem diagnózis.</p>`;
+  result.classList.add('visible');
+});

@@ -1,49 +1,23 @@
-function calculateCalories(){
-    const weight = parseFloat(document.getElementById('weight').value);
-    const height = parseFloat(document.getElementById('height').value);
-    const age = parseInt(document.getElementById('age').value);
-    const gender = document.getElementById('gender').value;
-    const goal = document.getElementById('goal').value;
-    const resultElement = document.getElementById('result');
-    
-    if (isNaN(weight) || isNaN(height) || isNaN(age) || weight <= 0 || height <= 0 || age <= 0) {
-        resultElement.textContent = 'Kérlek, adj meg érvényes adatokat.';
-        return;
-    }
-    
-    let bmr = 0;
+const calorieForm = document.getElementById('calorieForm');
 
-    switch(gender){
-        case 'male':
-            bmr = 10 * weight + 6.25 * height - 5 * age + 5;
-            break;
-        case 'female':
-            bmr = 10 * weight + 6.25 * height - 5 * age - 161;
-            break;
-        default:
-            resultElement.textContent = 'Kérlek, válaszd ki a nemed.';
-            return;
-    }
+calorieForm.addEventListener('submit', (event) => {
+  event.preventDefault();
 
-    let finalCalories = bmr;
-    let goalText = '';
+  const gender = document.getElementById('gender').value;
+  const age = Number(document.getElementById('age').value);
+  const height = Number(document.getElementById('height').value);
+  const weight = Number(document.getElementById('weight').value);
+  const goal = document.getElementById('goal').value;
 
-    switch(goal){
-        case 'lose':
-            finalCalories -= 500;
-            goalText = 'fogyás (deficit)';
-            break;
-        case 'maintain':
-            goalText = 'súly megtartása (szintentartó)';
-            break;
-        case 'gain':
-            finalCalories += 300;
-            goalText = 'tömegnövelés';
-            break;
-        default:
-            goalText = 'szintentartó';
-            break;
-    }
+  if (![age, height, weight].every(Number.isFinite) || age <= 0 || height <= 0 || weight <= 0) return;
 
-    resultElement.textContent = `A napi kalóriaszükségleted (${goalText}): ${finalCalories.toFixed(2)} kcal`;
-}
+  const bmr = 10 * weight + 6.25 * height - 5 * age + (gender === 'male' ? 5 : -161);
+  const maintenance = bmr * 1.2;
+  const adjustment = goal === 'lose' ? -300 : goal === 'gain' ? 300 : 0;
+  const target = Math.round((maintenance + adjustment) / 10) * 10;
+  const result = document.getElementById('result');
+  const goalText = goal === 'lose' ? 'becsült, mérsékelt deficithez' : goal === 'gain' ? 'becsült, mérsékelt többlethez' : 'szintentartáshoz';
+
+  result.innerHTML = `<p class="result-label">Becsült napi cél ${goalText}</p><p class="result-value">${target.toLocaleString('hu-HU')} <span>kcal / nap</span></p><p class="result-note">Az ülő életmódot feltételező becslés egyéni aktivitás és élethelyzet szerint változhat.</p>`;
+  result.classList.add('visible');
+});
