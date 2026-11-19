@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0d0c">
+  <title>Strive — Fitness platform</title>
+  <link rel="stylesheet" href="CSS/Strive.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="index.html">strive<span>.</span></a>
+    <nav aria-label="Fő navigáció">
+      <a href="#tools">Kalkulátorok</a>
+      <a href="#about">Rólunk</a>
+    </nav>
+    <div class="header-actions">
+      <button class="button button-small" type="button" onclick="showPage('login')">Belépés</button>
+      <button class="button button-small button-primary" type="button" onclick="showPage('register')">Regisztráció</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow"><span class="status-dot"></span> Edzés. Tudatosság. Fejlődés.</p>
+      <h1>Haladj a saját<br><span>tempódban.</span></h1>
+      <p class="lead">Tudatosabb célok, jobb rálátás a fejlődésedre. Használd a Strive egyszerű fitness eszközeit.</p>
+      <a class="button button-primary" href="#tools">Kalkulátorok megnyitása <span aria-hidden="true">↗</span></a>
+      <div class="hero-foot"><span>STRIVE — FITNESS PLATFORM</span><span>01 / 03</span></div>
+    </section>
+
+    <section class="audience-section" aria-labelledby="audience-heading">
+      <div class="section-heading">
+        <p class="eyebrow">TALÁLD MEG A SAJÁT UTAD</p>
+        <h2 id="audience-heading">Neked szól a Strive?</h2>
+        <p>Válaszd ki, melyik terület érdekel.</p>
+      </div>
+      <div class="audience-grid">
+        <a class="audience-card" href="#felhasznalok">
+          <span class="card-index">01 / FELHASZNÁLÓK</span>
+          <h3>Felhasználóknak</h3>
+          <p>Kövesd a céljaidat, és használd a kalkulátorokat a tudatosabb tervezéshez.</p>
+          <span class="card-link">Tovább a felhasználóknak <span aria-hidden="true">↗</span></span>
+        </a>
+        <a class="audience-card" href="#edzok">
+          <span class="card-index">02 / EDZŐK</span>
+          <h3>Edzőknek</h3>
+          <p>Ismerd meg, hogyan segíthet a Strive abban, hogy elérd a hozzád illő embereket.</p>
+          <span class="card-link">Tovább az edzőknek <span aria-hidden="true">↗</span></span>
+        </a>
+      </div>
+    </section>
+
+    <section class="audience-detail" id="felhasznalok">
+      <p class="eyebrow">FELHASZNÁLÓKNAK</p>
+      <h2>Tervezz a saját céljaid szerint.</h2>
+      <p>Indulj a Strive kalkulátoraival, és alakíts ki tudatosabb napi rutint.</p>
+      <a class="button button-primary" href="#tools">Kalkulátorok megtekintése <span aria-hidden="true">↗</span></a>
+    </section>
+
+    <section class="audience-detail audience-detail-alt" id="edzok">
+      <p class="eyebrow">EDZŐKNEK</p>
+      <h2>Kapcsolódj a fejlődni vágyókhoz.</h2>
+      <p>A Strive az edzőknek és az edzést keresőknek szóló felület fejlesztésének alapja.</p>
+      <a class="button" href="#about">Tudj meg többet <span aria-hidden="true">↗</span></a>
+    </section>
+
+    <section class="tools-section" id="tools">
+      <div class="section-heading">
+        <p class="eyebrow">A STRIVE ESZKÖZEI</p>
+        <h2>Kezdd az alapoknál.</h2>
+        <p>Válaszd ki a kalkulátort. Mindkettő külön oldalon nyílik meg.</p>
+      </div>
+      <div class="tool-grid">
+        <a class="tool-card" href="calories.html">
+          <span class="card-index">01 / TÁPLÁLKOZÁS</span>
+          <span class="card-icon" aria-hidden="true">＋</span>
+          <h3>Kalória kalkulátor</h3>
+          <p>Becsüld meg a napi kalóriaszükségleted a célod alapján.</p>
+          <span class="card-link">Kalkulátor megnyitása <span aria-hidden="true">↗</span></span>
+        </a>
+        <a class="tool-card" href="bmi.html">
+          <span class="card-index">02 / TESTÖSSZETÉTEL</span>
+          <span class="card-icon" aria-hidden="true">⌁</span>
+          <h3>BMI kalkulátor</h3>
+          <p>Számítsd ki a testtömegindexet a magasságod és tömeged alapján.</p>
+          <span class="card-link">Kalkulátor megnyitása <span aria-hidden="true">↗</span></span>
+        </a>
+      </div>
+    </section>
+
+    <section class="bottom-cta" id="about">
+      <div><p class="eyebrow">A SAJÁT TEMPÓDBAN</p><h2>A fejlődés egy döntéssel kezdődik.</h2></div>
+    </section>
+  </main>
+  <section class="auth" id="login" aria-labelledby="login-heading">
+    <div class="auth-box">
+      <a class="logo" href="index.html">strive<span>.</span></a>
+      <h1 id="login-heading">Üdv újra.</h1>
+      <p class="auth-sub">Jelentkezz be a fiókodba.</p>
+      <form onsubmit="submitAuth(event, 'login')">
+        <div class="field">
+          <label for="loginEmail">E-mail cím</label>
+          <input id="loginEmail" type="email" placeholder="nev@email.com" required>
+        </div>
+        <div class="field">
+          <label for="loginPassword">Jelszó</label>
+          <input id="loginPassword" type="password" placeholder="Jelszó" required>
+        </div>
+        <button class="button button-primary submit-button" type="submit">Bejelentkezés</button>
+        <p class="auth-message" id="loginMessage" aria-live="polite"></p>
+      </form>
+      <p class="auth-switch">Nincs még fiókod? <button type="button" class="text-button" onclick="showPage('register')">Regisztráció</button></p>
+      <button class="back-link auth-back" type="button" onclick="showPage('home')">← Vissza a főoldalra</button>
+    </div>
+  </section>
+
+  <section class="auth" id="register" aria-labelledby="register-heading">
+    <div class="auth-box">
+      <a class="logo" href="index.html">strive<span>.</span></a>
+      <h1 id="register-heading">Csatlakozz.</h1>
+      <p class="auth-sub">Hozd létre az új Strive-fiókodat.</p>
+      <form onsubmit="submitAuth(event, 'register')">
+        <div class="field">
+          <label for="fullName">Teljes név</label>
+          <input id="fullName" type="text" placeholder="Teljes neved" required>
+        </div>
+        <div class="field">
+          <label for="registerEmail">E-mail cím</label>
+          <input id="registerEmail" type="email" placeholder="nev@email.com" required>
+        </div>
+        <div class="field">
+          <label for="registerPassword">Jelszó</label>
+          <input id="registerPassword" type="password" placeholder="Legalább 8 karakter" minlength="8" required>
+        </div>
+        <button class="button button-primary submit-button" type="submit">Fiók létrehozása</button>
+        <p class="auth-message" id="registerMessage" aria-live="polite"></p>
+      </form>
+      <p class="auth-switch">Van már fiókod? <button type="button" class="text-button" onclick="showPage('login')">Bejelentkezés</button></p>
+      <button class="back-link auth-back" type="button" onclick="showPage('home')">← Vissza a főoldalra</button>
+    </div>
+  </section>
+
+  <footer id="site-footer">© 2026 Strive. A kalkulátorok tájékoztató jellegű becslést adnak.</footer>
+  <script>
+    function showPage(page) {
+      document.querySelector('main').style.display = page === 'home' ? '' : 'none';
+      document.getElementById('site-footer').style.display = page === 'home' ? '' : 'none';
+      document.querySelector('.site-header').style.display = page === 'home' ? '' : 'none';
+      document.getElementById('login').classList.toggle('active', page === 'login');
+      document.getElementById('register').classList.toggle('active', page === 'register');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    async function submitAuth(event, type) {
+      event.preventDefault();
+      const message = document.getElementById(type + 'Message');
+      const form = event.currentTarget;
+      const data = Object.fromEntries(new FormData(form).entries());
+      if (type === 'login') {
+        data.email = document.getElementById('loginEmail').value;
+        data.password = document.getElementById('loginPassword').value;
+      } else {
+        data.name = document.getElementById('fullName').value;
+        data.email = document.getElementById('registerEmail').value;
+        data.password = document.getElementById('registerPassword').value;
+      }
+      message.textContent = 'Feldolgozás…';
+      try {
+        const response = await fetch('/api/auth', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ action: type, ...data })
+        });
+        const result = await response.json();
+        if (!response.ok) throw new Error(result.message || 'Nem sikerült a művelet.');
+        window.location.href = 'user.html';
+      } catch (error) {
+        message.textContent = error.message || 'Nem érhető el az alkalmazásszerver. Indítsd el a Node.js/MySQL szervert.';
+      }
+    }
+  </script>
+</body>
+</html>
